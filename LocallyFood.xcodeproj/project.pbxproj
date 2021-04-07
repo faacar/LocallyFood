@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DEBD2444E1D15C49F8B4FF3 /* Pods_LocallyFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8FC48AA80861BC06012504 /* Pods_LocallyFood.framework */; };
+		7252A5DF261E38A300E38575 /* FoodReceipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7252A5DE261E38A300E38575 /* FoodReceipeViewController.swift */; };
+		7252A5E2261E396000E38575 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7252A5E1261E396000E38575 /* UIHelper.swift */; };
 		7285F588261CEE29005CE5D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285F587261CEE29005CE5D6 /* AppDelegate.swift */; };
 		7285F58A261CEE29005CE5D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285F589261CEE29005CE5D6 /* SceneDelegate.swift */; };
 		7285F591261CEE2C005CE5D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7285F590261CEE2C005CE5D6 /* Assets.xcassets */; };
@@ -24,15 +26,19 @@
 		7294C614261DAF3B004FE2D8 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294C613261DAF3B004FE2D8 /* HomePageViewController.swift */; };
 		72CD86AA261DEEDC0034E25B /* LFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD86A9261DEEDC0034E25B /* LFError.swift */; };
 		72CD86AE261DF5250034E25B /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD86AD261DF5250034E25B /* UIImageView+Ext.swift */; };
+		72CD86BA261E29BE0034E25B /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD86B9261E29BE0034E25B /* CategoryViewController.swift */; };
 		72D1D4C9261DD0FB003814DE /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D1D4C8261DD0FB003814DE /* CategoriesCollectionViewCell.swift */; };
 		72D1D4CF261DD22C003814DE /* LFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D1D4CE261DD22C003814DE /* LFImageView.swift */; };
 		72D1D4D4261DD27B003814DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D1D4D3261DD27B003814DE /* Constants.swift */; };
 		72D1D4D7261DD56C003814DE /* LFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D1D4D6261DD56C003814DE /* LFLabel.swift */; };
+		72FA3C3B261E3098007E61B8 /* CategoryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FA3C3A261E3098007E61B8 /* CategoryListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		003F502CE27B7CAE971D0C03 /* Pods-LocallyFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallyFood.debug.xcconfig"; path = "Target Support Files/Pods-LocallyFood/Pods-LocallyFood.debug.xcconfig"; sourceTree = "<group>"; };
 		0F8FC48AA80861BC06012504 /* Pods_LocallyFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallyFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7252A5DE261E38A300E38575 /* FoodReceipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodReceipeViewController.swift; sourceTree = "<group>"; };
+		7252A5E1261E396000E38575 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7285F584261CEE29005CE5D6 /* LocallyFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocallyFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7285F587261CEE29005CE5D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7285F589261CEE29005CE5D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,10 +57,12 @@
 		7294C613261DAF3B004FE2D8 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		72CD86A9261DEEDC0034E25B /* LFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFError.swift; sourceTree = "<group>"; };
 		72CD86AD261DF5250034E25B /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		72CD86B9261E29BE0034E25B /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		72D1D4C8261DD0FB003814DE /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		72D1D4CE261DD22C003814DE /* LFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFImageView.swift; sourceTree = "<group>"; };
 		72D1D4D3261DD27B003814DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72D1D4D6261DD56C003814DE /* LFLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFLabel.swift; sourceTree = "<group>"; };
+		72FA3C3A261E3098007E61B8 /* CategoryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3012736D650187DE4086BEF /* Pods-LocallyFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallyFood.release.xcconfig"; path = "Target Support Files/Pods-LocallyFood/Pods-LocallyFood.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				7294C613261DAF3B004FE2D8 /* HomePageViewController.swift */,
+				72CD86B9261E29BE0034E25B /* CategoryViewController.swift */,
+				7252A5DE261E38A300E38575 /* FoodReceipeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -176,6 +186,7 @@
 			children = (
 				7294C610261DAD48004FE2D8 /* CountryFilterCollectionViewCell.swift */,
 				72D1D4C8261DD0FB003814DE /* CategoriesCollectionViewCell.swift */,
+				72FA3C3A261E3098007E61B8 /* CategoryListCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -193,6 +204,7 @@
 			children = (
 				72D1D4D3261DD27B003814DE /* Constants.swift */,
 				72CD86A9261DEEDC0034E25B /* LFError.swift */,
+				7252A5E1261E396000E38575 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -326,9 +338,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72FA3C3B261E3098007E61B8 /* CategoryListCollectionViewCell.swift in Sources */,
 				72D1D4C9261DD0FB003814DE /* CategoriesCollectionViewCell.swift in Sources */,
 				7285F5BB261D0157005CE5D6 /* Country.swift in Sources */,
+				7252A5E2261E396000E38575 /* UIHelper.swift in Sources */,
 				7285F588261CEE29005CE5D6 /* AppDelegate.swift in Sources */,
+				72CD86BA261E29BE0034E25B /* CategoryViewController.swift in Sources */,
 				7285F5CA261D0661005CE5D6 /* List.swift in Sources */,
 				72CD86AE261DF5250034E25B /* UIImageView+Ext.swift in Sources */,
 				7285F5D3261D1646005CE5D6 /* NetworkManager.swift in Sources */,
@@ -338,6 +353,7 @@
 				72D1D4D4261DD27B003814DE /* Constants.swift in Sources */,
 				7294C611261DAD48004FE2D8 /* CountryFilterCollectionViewCell.swift in Sources */,
 				7285F5BE261D01B6005CE5D6 /* Meal.swift in Sources */,
+				7252A5DF261E38A300E38575 /* FoodReceipeViewController.swift in Sources */,
 				7285F58A261CEE29005CE5D6 /* SceneDelegate.swift in Sources */,
 				72CD86AA261DEEDC0034E25B /* LFError.swift in Sources */,
 				7285F5C6261D044E005CE5D6 /* LocallyFood.swift in Sources */,

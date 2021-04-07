@@ -96,12 +96,11 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout, UICollecti
         if collectionView == self.filterCountryCollectionView {
             return CGSize(width: collectionView.frame.width/2.4, height: collectionView.frame.height/1.4)
         } else {
-            let numberOfItemsPerRow:CGFloat = 3
-            let spacingBetweenCells:CGFloat = 8
-            
-            let totalSpacing = (2 * 8) + ((numberOfItemsPerRow - 1) * spacingBetweenCells)
-            let width = (categoriesCollectionView.bounds.width - totalSpacing)/numberOfItemsPerRow
-            return CGSize(width: width, height: width)
+            let size = UIHelper.createCollectionViewFlowLayoutSize(numberOfItemsPerRow: 3,
+                                                                   spacingBetweenCells: 8,
+                                                                   height: nil,
+                                                                   collectionView: categoriesCollectionView)
+            return size
         }
     }
     
@@ -127,7 +126,18 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout, UICollecti
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let destinationVC = CategoryListViewController() // CategoryNamePage
+        if collectionView == self.filterCountryCollectionView {
+            destinationVC.type = "a"
+            destinationVC.info = countries[indexPath.row].countryName
+        } else {
+            destinationVC.type = "c"
+            destinationVC.info = categories[indexPath.row].name
+
+        }
         print("clicked")
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     

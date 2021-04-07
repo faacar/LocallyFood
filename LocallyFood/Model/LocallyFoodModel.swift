@@ -20,5 +20,5 @@ struct Countries: Codable {
 }
 
 struct Lists: Codable {
-    let list: [List]
+    let meals: [List]
 }

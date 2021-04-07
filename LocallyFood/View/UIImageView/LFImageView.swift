@@ -11,6 +11,7 @@ class LFImageView: UIImageView {
 
     init() {
         super.init(frame: .zero)
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -21,8 +22,8 @@ class LFImageView: UIImageView {
         image = UIImage(named: LFImages.placeholder)!
         clipsToBounds = true
         layer.cornerRadius = 10
-        layer.borderWidth = 2.0
-        layer.borderColor = LFColors.cellBorderColor?.cgColor
+        //layer.borderWidth = 2.0
+        //layer.borderColor = LFColors.cellBorderColor?.cgColor
         sizeToFit()
     }
 }

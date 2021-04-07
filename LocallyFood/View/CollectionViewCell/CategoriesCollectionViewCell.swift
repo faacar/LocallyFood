@@ -48,17 +48,11 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
             make.height.equalToSuperview().multipliedBy(0.6)
         }
         
-        
         categoryLabel.snp.makeConstraints { (make) in
             make.top.equalTo(categoryImage.snp.bottom).offset(4)
             make.left.equalToSuperview().offset(4)
             make.right.equalToSuperview().offset(4)
             make.bottom.equalToSuperview().offset(4)
         }
-        
-        
-        
     }
-    
-    
 }
