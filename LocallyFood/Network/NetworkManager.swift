@@ -10,7 +10,6 @@ import Alamofire
 class NetworkManager {
     static let shared = NetworkManager()
     private let baseURL = "https://www.themealdb.com/api/json/v1/1"
-    
     private init () {}
     
     func getReceipe(id: String) -> [Meal] {
@@ -18,31 +17,36 @@ class NetworkManager {
         var result = [Meal]()
         request.responseDecodable(of: Receipe.self) { (response) in
           guard let data = response.value else { return }
-            print(data.meals[0])
+            //print(data.meals[0])
             result = data.meals
         }
+        print(result)
         return result
     }
     
-    func getCategories() -> [Category]{
+    
+    func getCategories(completionHandler: @escaping (Result<[Category], LFError>) -> Void){
         let request = AF.request("\(baseURL)/categories.php")
-        var result = [Category]()
         request.responseDecodable(of: Categories.self) { (response) in
-          guard let data = response.value else { return }
-            print(data.categories)
-            result = data.categories
+          guard let data = response.value else {
+            completionHandler(.failure(.decodeError))
+            return
+          }
+            //print("data:\(data.categories)")
+            completionHandler(.success(data.categories))
+            
         }
-        return result
     }
     
-    func getCountries() -> [Country]{
+    func getCountries(completionHandler: @escaping (Result<[Country], LFError>) -> Void){
         let request = AF.request("\(baseURL)//list.php?a=list")
-        var result = [Country]()
         request.responseDecodable(of: Countries.self) { (response) in
-          guard let data = response.value else { return }
-            result = data.meals
+          guard let data = response.value else {
+            completionHandler(.failure(.decodeError))
+            return
+          }
+            completionHandler(.success(data.meals))
         }
-        return result
     }
     
     func getLists(type: String, info: String) -> [List]{
@@ -50,7 +54,6 @@ class NetworkManager {
         var result = [List]()
         request.responseDecodable(of: Lists.self) { (response) in
           guard let data = response.value else { return }
-            print("anan")
             print(data.list)
             result = data.list
         }
