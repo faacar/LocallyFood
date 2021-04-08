@@ -12,18 +12,16 @@ class NetworkManager {
     private let baseURL = "https://www.themealdb.com/api/json/v1/1"
     private init () {}
     
-    func getReceipe(id: String) -> [Meal] {
-        let request = AF.request("\(baseURL)/lookup.php?i=\(id)")
-        var result = [Meal]()
+    func getReceipe(id: String, completionHandler: @escaping (Result<[Meal], LFError>) -> Void) {
+        let request = AF.request("\(baseURL)/lookup.php", parameters: ["i":id])
         request.responseDecodable(of: Receipe.self) { (response) in
-          guard let data = response.value else { return }
-            //print(data.meals[0])
-            result = data.meals
+            guard let data = response.value else {
+                completionHandler(.failure(.decodeError))
+                return
+            }
+            completionHandler(.success(data.meals))
         }
-        print(result)
-        return result
     }
-    
     
     func getCategories(completionHandler: @escaping (Result<[Category], LFError>) -> Void){
         let request = AF.request("\(baseURL)/categories.php")
@@ -32,7 +30,6 @@ class NetworkManager {
             completionHandler(.failure(.decodeError))
             return
           }
-            //print("data:\(data.categories)")
             completionHandler(.success(data.categories))
             
         }
@@ -40,7 +37,6 @@ class NetworkManager {
     
     func getCountries(completionHandler: @escaping (Result<[Country], LFError>) -> Void){
         let request = AF.request("\(baseURL)/list.php", parameters: ["a":"list"])
-        print(request)
         request.responseDecodable(of: Countries.self) { (response) in
           guard let data = response.value else {
             completionHandler(.failure(.decodeError))
@@ -51,10 +47,7 @@ class NetworkManager {
     }
     
     func getLists(type: String, info: String, completionHandler: @escaping (Result<[List], LFError>) -> Void){
-        print("type:\(type)")
-        print("info:\(info)")
         let request = AF.request("\(baseURL)/filter.php", parameters: [type:info])
-        print(request)
         request.responseDecodable(of: Lists.self) { (response) in
           guard let data = response.value else {
             completionHandler(.failure(.decodeError))
@@ -63,6 +56,4 @@ class NetworkManager {
             completionHandler(.success(data.meals))
         }
     }
-    
-    
 }

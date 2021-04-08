@@ -22,13 +22,21 @@ class CategoryListViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        view.backgroundColor = .systemBackground
-        title = info
         collectionView.delegate = self
         collectionView.dataSource = self
+        networkCall()
+        configureNavigationController()
         configureCollectionView()
     }
     
+//MARK: - Mehtods
+    
+    private func configureNavigationController() {
+        title = info
+        view.backgroundColor = .systemBackground
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+    }
     
     private func configureCollectionView() {
         view.addSubview(collectionView)
@@ -42,8 +50,11 @@ class CategoryListViewController: UIViewController {
             make.right.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview()
         }
-        
-        
+    }
+    
+//MARK: - NetworkCall
+    
+    private func networkCall() {
         DispatchQueue.main.async {
             NetworkManager.shared.getLists(type: self.type, info: self.info) { (result) in
                 switch result {
@@ -56,10 +67,9 @@ class CategoryListViewController: UIViewController {
             }
         }
     }
-    
-    
-    
 }
+
+//MARK: Extension - UICollectionViewDelegate - UICollectionViewDataSource - UICollectionViewDelegateFlowLayout
 
 extension CategoryListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -81,10 +91,8 @@ extension CategoryListViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let destinationVC = FoodReceipeViewController() // ProductDetail
+        let destinationVC = FoodRecipeViewController() // ProductDetail
+        destinationVC.id = foodLists[indexPath.row].id
         navigationController?.pushViewController(destinationVC, animated: true)
-        
     }
-    
-    
 }

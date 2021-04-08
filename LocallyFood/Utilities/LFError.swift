@@ -13,4 +13,3 @@ enum LFError: String, Error {
     case decodeError = "url couldn't decoded"
     case unexpectedError = "Unexpected error found please try again later"
 }
-

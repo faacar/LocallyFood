@@ -30,19 +30,25 @@ class HomePageViewController: UIViewController{
     }()
     
     override func viewDidLoad() {
-        title = "Home Page"
-        view.backgroundColor = .systemBackground
         configureFilterCountryCollectionView()
         configureCategoriesCollectionView()
+        configureNavigationController()
     }
     
-
+//MARK: - Methods
+    
+    private func configureNavigationController() {
+        title = "Home Page"
+        view.backgroundColor = .systemBackground
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
     
     private func configureFilterCountryCollectionView() {
         view.addSubview(filterCountryCollectionView)
         filterCountryCollectionView.backgroundColor = .systemBackground
         filterCountryCollectionView.delegate = self
         filterCountryCollectionView.dataSource = self
+        countryNetworkCall()
         
         filterCountryCollectionView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -50,18 +56,6 @@ class HomePageViewController: UIViewController{
             make.right.equalToSuperview().offset(-8)
             make.height.equalToSuperview().multipliedBy(0.08)
         }
-        DispatchQueue.main.async {
-            NetworkManager.shared.getCountries { (result) in
-                switch result {
-                case .success(let data):
-                    self.countries = data
-                    self.filterCountryCollectionView.reloadData()
-                case .failure(_):
-                    print("error") // TODO: Handle the error
-                }
-            }
-        }
-
     }
     
     private func configureCategoriesCollectionView() {
@@ -69,6 +63,7 @@ class HomePageViewController: UIViewController{
         categoriesCollectionView.backgroundColor = .systemBackground
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
+        countryNetworkCall()
         
         categoriesCollectionView.snp.makeConstraints { (make) in
             make.top.equalTo(filterCountryCollectionView.snp.bottom)
@@ -76,7 +71,26 @@ class HomePageViewController: UIViewController{
             make.right.equalToSuperview().offset(-8)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
+    }
+    
+//MARK: - NetworkCall
+    
+    private func countryNetworkCall() {
+        DispatchQueue.main.async {
+            NetworkManager.shared.getCountries { (result) in
+                switch result {
+                case .success(let data):
+                    self.countries = data
+                    self.filterCountryCollectionView.reloadData()
+                case .failure(_):
+                    print("error")
+                    // TODO: Handle the error
+                }
+            }
+        }
+    }
+    
+    private func categoryNetworkCall() {
         NetworkManager.shared.getCategories { (result) in
             switch result {
             case .success(let data):
@@ -89,6 +103,8 @@ class HomePageViewController: UIViewController{
         }
     }
 }
+
+//MARK: - Extension UICollectionViewDelegateFlowLayout - UICollectionViewDataSource - UICollectionViewDelegate
 
 extension HomePageViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -124,7 +140,6 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout, UICollecti
         }
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let destinationVC = CategoryListViewController() // CategoryNamePage
@@ -136,10 +151,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout, UICollecti
             destinationVC.info = categories[indexPath.row].name
 
         }
-        print("clicked")
         navigationController?.pushViewController(destinationVC, animated: true)
     }
-    
-    
 }
 

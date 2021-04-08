@@ -13,6 +13,7 @@ struct List: Codable {
     let name: String
     let thumbnail: String
     let id: String
+    var isFavorite = false
     
     enum CodingKeys: String, CodingKey {
         case name = "strMeal"
