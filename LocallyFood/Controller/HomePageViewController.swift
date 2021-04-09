@@ -63,7 +63,7 @@ class HomePageViewController: UIViewController{
         categoriesCollectionView.backgroundColor = .systemBackground
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
-        countryNetworkCall()
+        categoryNetworkCall()
         
         categoriesCollectionView.snp.makeConstraints { (make) in
             make.top.equalTo(filterCountryCollectionView.snp.bottom)
@@ -76,27 +76,30 @@ class HomePageViewController: UIViewController{
 //MARK: - NetworkCall
     
     private func countryNetworkCall() {
-        DispatchQueue.main.async {
-            NetworkManager.shared.getCountries { (result) in
-                switch result {
-                case .success(let data):
+        NetworkManager.shared.getCountries { (result) in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
                     self.countries = data
                     self.filterCountryCollectionView.reloadData()
-                case .failure(_):
-                    print("error")
-                    // TODO: Handle the error
                 }
+            case .failure(_):
+                print("error")
+                // TODO: Handle the error
             }
         }
     }
     
     private func categoryNetworkCall() {
+        showLoadingView()
         NetworkManager.shared.getCategories { (result) in
+            self.dismissLoadingView()
             switch result {
             case .success(let data):
-                self.categories = data
-                self.categoriesCollectionView.reloadData()
-
+                DispatchQueue.main.async {
+                    self.categories = data
+                    self.categoriesCollectionView.reloadData()
+                }
             case .failure(_):
                 print("error")
             }

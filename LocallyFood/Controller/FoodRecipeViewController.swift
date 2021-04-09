@@ -24,7 +24,6 @@ class FoodRecipeViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.alwaysBounceVertical = true
         return scrollView
     }()
 
@@ -114,16 +113,18 @@ class FoodRecipeViewController: UIViewController {
 //MARK: - NetworkCall
     
     private func networkCall() {
-        DispatchQueue.main.async {
-            NetworkManager.shared.getReceipe(id: self.id) { (result) in
-                switch result {
-                case .success(let data):
-                    //print(data)
+        showLoadingView()
+        NetworkManager.shared.getReceipe(id: self.id) { (result) in
+            self.dismissLoadingView()
+            switch result {
+            case .success(let data):
+                //print(data)
+                DispatchQueue.main.async {
                     self.mealInfo = data[0]
                     self.setInfo()
-                case .failure(_):
-                    print("Error")
                 }
+            case .failure(_):
+                print("Error")
             }
         }
     }

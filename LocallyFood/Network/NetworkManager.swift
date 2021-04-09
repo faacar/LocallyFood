@@ -26,20 +26,19 @@ class NetworkManager {
     func getCategories(completionHandler: @escaping (Result<[Category], LFError>) -> Void){
         let request = AF.request("\(baseURL)/categories.php")
         request.responseDecodable(of: Categories.self) { (response) in
-          guard let data = response.value else {
-            completionHandler(.failure(.decodeError))
+            guard let data = response.value else {
+                completionHandler(.failure(.decodeError))
             return
-          }
+            }
             completionHandler(.success(data.categories))
-            
         }
     }
     
     func getCountries(completionHandler: @escaping (Result<[Country], LFError>) -> Void){
         let request = AF.request("\(baseURL)/list.php", parameters: ["a":"list"])
         request.responseDecodable(of: Countries.self) { (response) in
-          guard let data = response.value else {
-            completionHandler(.failure(.decodeError))
+            guard let data = response.value else {
+                completionHandler(.failure(.decodeError))
             return
           }
             completionHandler(.success(data.meals))
@@ -49,10 +48,10 @@ class NetworkManager {
     func getLists(type: String, info: String, completionHandler: @escaping (Result<[List], LFError>) -> Void){
         let request = AF.request("\(baseURL)/filter.php", parameters: [type:info])
         request.responseDecodable(of: Lists.self) { (response) in
-          guard let data = response.value else {
-            completionHandler(.failure(.decodeError))
+            guard let data = response.value else {
+                completionHandler(.failure(.decodeError))
             return
-          }
+            }
             completionHandler(.success(data.meals))
         }
     }

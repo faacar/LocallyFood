@@ -22,11 +22,8 @@ class CategoryListViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        networkCall()
-        configureNavigationController()
         configureCollectionView()
+        configureNavigationController()
     }
     
 //MARK: - Mehtods
@@ -43,7 +40,8 @@ class CategoryListViewController: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        networkCall()
+
         collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.left.equalToSuperview().offset(10)
@@ -55,15 +53,17 @@ class CategoryListViewController: UIViewController {
 //MARK: - NetworkCall
     
     private func networkCall() {
-        DispatchQueue.main.async {
-            NetworkManager.shared.getLists(type: self.type, info: self.info) { (result) in
-                switch result {
-                case .success(let data):
+        showLoadingView()
+        NetworkManager.shared.getLists(type: self.type, info: self.info) { (result) in
+            self.dismissLoadingView()
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
                     self.foodLists = data
                     self.collectionView.reloadData()
-                case .failure(_):
-                    print("Error")
                 }
+            case .failure(_):
+                print("Error")
             }
         }
     }
