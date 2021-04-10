@@ -16,4 +16,8 @@ enum LFImages {
 enum LFColors {
     static let cellBorderColor = UIColor(named: "cellBorderColor")
     static let collectionCellColor = UIColor(named: "countryFilterCollectionCellColor")
+    static let titleColor = UIColor(named: "titleColor")
+    static let largeCellColor = UIColor(named: "largeCellColor")
+    static let smallCellColor = UIColor(named: "smallCellColor")
+    static let labelColor = UIColor(named: "labelColor")
 }

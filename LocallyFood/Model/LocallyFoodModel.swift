@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Receipe: Codable {
+struct Receipe: Codable, Hashable {
+
+    
     var meals: [Meal]
 }
 

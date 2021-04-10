@@ -20,7 +20,7 @@ class LFLabel: UILabel {
     }
     
     private func configure() {
-        text = "Error"
+        text = "Missing value"
         textColor = .label
         numberOfLines = 0
         textAlignment = .left

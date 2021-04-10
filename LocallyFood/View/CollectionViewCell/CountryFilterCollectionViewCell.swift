@@ -30,8 +30,7 @@ class CountryFilterCollectionViewCell: UICollectionViewCell {
     
     func configure() {
         contentView.addSubview(countryLabel)
-        contentView.backgroundColor = LFColors.collectionCellColor
-        
+        backgroundColor = LFColors.smallCellColor
         layer.masksToBounds = true
         layer.cornerRadius = 15.0
         

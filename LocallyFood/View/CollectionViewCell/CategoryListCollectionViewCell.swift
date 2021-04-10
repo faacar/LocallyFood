@@ -13,12 +13,12 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
     
     lazy var catergoryImage = LFImageView()
     lazy var catergoryLabel = LFLabel(fontSize: 16)
-    lazy var isFavoriteButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: LFImages.star), for: .normal)
-        button.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
-        return button
-    }()
+//    lazy var isFavoriteButton: UIButton = {
+//        let button = UIButton()
+//        button.setImage(UIImage(systemName: LFImages.star), for: .normal)
+//        button.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
+//        return button
+//    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -35,25 +35,23 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
     }
     
     func configure() {
-        
         catergoryLabel.textAlignment = .center
         
         layer.borderWidth = 2.0
         layer.borderColor = LFColors.cellBorderColor?.cgColor
         layer.masksToBounds = true
         layer.cornerRadius = 15.0
-        
 
         contentView.addSubview(catergoryImage)
         contentView.addSubview(catergoryLabel)
-        contentView.addSubview(isFavoriteButton)
+        //contentView.addSubview(isFavoriteButton)
         
-        isFavoriteButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(5)
-            make.right.equalToSuperview().offset(-5)
-            make.height.equalToSuperview().multipliedBy(0.16)
-            make.width.equalTo(isFavoriteButton.snp.height)
-        }
+//        isFavoriteButton.snp.makeConstraints { (make) in
+//            make.top.equalToSuperview().offset(5)
+//            make.right.equalToSuperview().offset(-5)
+//            make.height.equalToSuperview().multipliedBy(0.16)
+//            make.width.equalTo(isFavoriteButton.snp.height)
+//        }
         
         catergoryImage.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(24)
@@ -70,8 +68,7 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @objc func favoriteButtonClicked() {
-        print("favorites button clicked")
-    }
-    
+//    @objc func favoriteButtonClicked() {
+//        print("favorites button clicked")
+//    }
 }

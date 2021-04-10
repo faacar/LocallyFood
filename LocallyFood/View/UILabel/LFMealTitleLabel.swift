@@ -20,8 +20,8 @@ class LFMealTitleLabel: UILabel {
     }
     
     private func configure() {
-        text = "Error"
-        textColor = .black
+        text = "Missing value"
+        textColor = LFColors.titleColor
         numberOfLines = 0
         textAlignment = .left
     }

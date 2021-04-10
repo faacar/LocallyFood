@@ -17,13 +17,13 @@ class CategoryListViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.register(CategoryListCollectionViewCell.self, forCellWithReuseIdentifier: CategoryListCollectionViewCell.reuseIdentifier)
+        cv.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier)
         return cv
     }()
     
     override func viewDidLoad() {
-        configureCollectionView()
         configureNavigationController()
+        configureCollectionView()
     }
     
 //MARK: - Mehtods
@@ -63,7 +63,7 @@ class CategoryListViewController: UIViewController {
                     self.collectionView.reloadData()
                 }
             case .failure(_):
-                print("Error")
+                print("Missing Value")
             }
         }
     }
@@ -77,7 +77,7 @@ extension CategoryListViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryListCollectionViewCell.reuseIdentifier, for: indexPath) as! CategoryListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier, for: indexPath) as! CategoriesCollectionViewCell
         cell.set(name: foodLists[indexPath.row].name, image: foodLists[indexPath.row].thumbnail)
         return cell
     }

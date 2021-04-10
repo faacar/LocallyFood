@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Meal: Codable {
+struct Meal: Codable, Hashable {
     //https://www.themealdb.com/api/json/v1/1/lookup.php?i=52767
     let id: String
     let name: String
@@ -15,8 +15,6 @@ struct Meal: Codable {
     let type: String?
     let instructions: String?
     let thumbnail: String
-    let tags: String?
-    let youtubeLink: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "idMeal"
@@ -25,7 +23,5 @@ struct Meal: Codable {
         case type = "strArea"
         case instructions = "strInstructions"
         case thumbnail = "strMealThumb"
-        case tags = "strTags"
-        case youtubeLink = "strYoutube"
     }
 }

@@ -35,9 +35,9 @@ class FoodRecipeViewController: UIViewController {
         
         addSubView()
         networkCall()
-        configureUI()
+        configure()
         configureStackView()
-        configureViewController()
+        configureNavigationController()
     }
     
 //MARK: - Methods
@@ -68,20 +68,21 @@ class FoodRecipeViewController: UIViewController {
         stackView.spacing = 4
     }
     
-    private func configureViewController() {
-        let buttonImage = UIImage(systemName: LFImages.starFill)?.withTintColor(UIColor.systemYellow, renderingMode: .alwaysOriginal)
-        let addButton = UIBarButtonItem(image: buttonImage, style: .done, target: self, action: #selector(favoriteButtonTapped))
+    private func configureNavigationController() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(favoriteButtonTapped ))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = addButton
     }
     
 //MARK: - Setup UI
 
-    private func configureUI() {
+    private func configure() {
+        mealDescriptionLabel.textColor = LFColors.labelColor
+        
         mealImage.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview().offset(-12)
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(12)
             make.height.equalTo(view.snp.height).multipliedBy(0.35)
         }
         stackView.snp.makeConstraints { (make) in
@@ -100,7 +101,8 @@ class FoodRecipeViewController: UIViewController {
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+
         }
         contentView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
@@ -133,5 +135,14 @@ class FoodRecipeViewController: UIViewController {
     
     @objc func favoriteButtonTapped() {
         print("favorite button tapped")
+        PersistenceManager.updateWith(favorite: mealInfo!, actionType: .add) { (error) in
+            guard let _ = error else {
+                self.presentAlert(title: "Success!", message: "You made it")
+                return
+            }
+            self.presentAlert(title: "You did it again!", message: "You've already added this to your favorites")
+        }
+
+        
     }
 }

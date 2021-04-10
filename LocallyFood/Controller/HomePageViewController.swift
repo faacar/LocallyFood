@@ -40,7 +40,9 @@ class HomePageViewController: UIViewController{
     private func configureNavigationController() {
         title = "Home Page"
         view.backgroundColor = .systemBackground
+        let buttonImage = UIImage(systemName: LFImages.starFill)?.withTintColor(UIColor.systemYellow, renderingMode: .alwaysOriginal)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(favoriteButtonTapped))
     }
     
     private func configureFilterCountryCollectionView() {
@@ -83,9 +85,9 @@ class HomePageViewController: UIViewController{
                     self.countries = data
                     self.filterCountryCollectionView.reloadData()
                 }
-            case .failure(_):
-                print("error")
-                // TODO: Handle the error
+            case .failure(let error):
+                self.presentAlert(title: "Bad thing happened", message: error.rawValue)
+
             }
         }
     }
@@ -100,10 +102,15 @@ class HomePageViewController: UIViewController{
                     self.categories = data
                     self.categoriesCollectionView.reloadData()
                 }
-            case .failure(_):
-                print("error")
+            case .failure(let error):
+                self.presentAlert(title: "Bad thing happened", message: error.rawValue)
             }
         }
+    }
+    
+    @objc func favoriteButtonTapped() {
+        let destinationVC = FavoriteReceipesViewController()
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
 
