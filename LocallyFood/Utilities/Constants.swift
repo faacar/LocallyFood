@@ -11,6 +11,7 @@ enum LFImages {
     static let placeholder = "defaultPlaceholder"
     static let star = "star"
     static let starFill = "star.fill"
+    static let launchScreenLogo = "launchScreenLogo"
 }
 
 enum LFColors {
@@ -20,4 +21,5 @@ enum LFColors {
     static let largeCellColor = UIColor(named: "largeCellColor")
     static let smallCellColor = UIColor(named: "smallCellColor")
     static let labelColor = UIColor(named: "labelColor")
+    static let launchScreenBackgroundColor = UIColor(named: "launchScreenBackgroundColor")
 }
