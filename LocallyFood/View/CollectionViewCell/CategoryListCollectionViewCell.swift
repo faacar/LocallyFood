@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class CategoryListCollectionViewCell: UICollectionViewCell {
+    
     static let reuseIdentifier: String = "CategoryListViewController"
     
     lazy var catergoryImage = LFImageView()

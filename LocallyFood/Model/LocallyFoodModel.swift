@@ -8,8 +8,6 @@
 import Foundation
 
 struct Receipe: Codable, Hashable {
-
-    
     var meals: [Meal]
 }
 

@@ -142,7 +142,5 @@ class FoodRecipeViewController: UIViewController {
             }
             self.presentAlert(title: "You did it again!", message: "You've already added this to your favorites")
         }
-
-        
     }
 }

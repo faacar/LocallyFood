@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class HomePageViewController: UIViewController{
+    
     var countries: [Country] = []
     var categories: [Category] = []
     
@@ -38,7 +39,7 @@ class HomePageViewController: UIViewController{
 //MARK: - Methods
     
     private func configureNavigationController() {
-        title = "Home Page"
+        title = "Home"
         view.backgroundColor = .systemBackground
         let buttonImage = UIImage(systemName: LFImages.starFill)?.withTintColor(UIColor.systemYellow, renderingMode: .alwaysOriginal)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

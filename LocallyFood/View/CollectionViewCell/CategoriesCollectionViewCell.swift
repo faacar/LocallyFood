@@ -30,7 +30,6 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     }
     
     func configure() {
-        
         categoryLabel.textAlignment = .center
         backgroundColor = LFColors.largeCellColor
         layer.borderWidth = 2.0

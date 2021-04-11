@@ -15,8 +15,6 @@ class FavoriteReceipesTableViewCell: UITableViewCell {
     let foodNameLabel = LFMealTitleLabel(fontSize: 16)
     let foodCategoryLabel = LFLabel(fontSize: 15)
     
-    
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()

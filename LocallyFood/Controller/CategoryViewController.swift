@@ -72,6 +72,7 @@ class CategoryListViewController: UIViewController {
 //MARK: Extension - UICollectionViewDelegate - UICollectionViewDataSource - UICollectionViewDelegateFlowLayout
 
 extension CategoryListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         foodLists.count
     }
