@@ -1,5 +1,3 @@
-# Invio Bilişim Assigment Project
-
 # Images
 <img src = "https://github.com/faacar/LocallyFood/blob/main/readmeAssets/asset.png">
 
